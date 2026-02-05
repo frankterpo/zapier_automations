@@ -1,41 +1,41 @@
-# Intercom Request / Slack Automation
+# Intercom Request Slack Automation
 
 > **Status**: ✅ Active (ON)  
-> **Location**: CS  
-> **Last Modified**: Jan 16, 2026  
-> **Owner**: Dominik Vacikar  
+> **Zap ID**: 206743152  
+> **Steps**: 5  
+> **Last Modified**: February 03, 2026  
+> **Last Successful Run**: October 03, 2024 at 17:27 UTC  
+> **Editor**: [Open in Zapier](https://zapier.com/editor/206743152)
 
 ## Table of Contents
 1. [What This Zap Does](#what-this-zap-does)
-2. [Why This Exists](#why-this-exists)
+2. [Apps Used](#apps-used)
 3. [Flow Architecture](#flow-architecture)
-4. [Filter Conditions](#filter-conditions)
-5. [Slack Message Format](#slack-message-format)
+4. [Step-by-Step Breakdown](#step-by-step-breakdown)
+5. [Troubleshooting](#troubleshooting)
+6. [How to Modify](#how-to-modify)
 
 ---
 
 ## What This Zap Does
 
-When a **customer support request** comes through Intercom (that isn't handled by the bot), this Zap:
+This automation is triggered by **Intercom** and performs 4 subsequent actions.
 
-1. **Captures** the Intercom conversation
-2. **Filters** to exclude bot-handled conversations
-3. **Posts** to Slack for team visibility
-4. **Links** directly to the Intercom conversation
+**Trigger**: Intercom: new_conversation
+
+**Main Actions**: Code by Zapier → Ai → Slack
 
 ---
 
-## Why This Exists
+## Apps Used
 
-### Business Problem Solved
-- **Response Time**: Support requests were missed
-- **Visibility**: Team didn't know when help was needed
-- **Prioritization**: No way to see urgent requests quickly
-
-### Value Delivered
-- Real-time support request alerts
-- Reduced average response time
-- Better customer experience
+| App | Usage in Zap |
+|-----|-------------|
+| Intercom | 1 step(s): Intercom: new_conversation |
+| Filter by Zapier | 1 step(s): Filter by Zapier: Filter |
+| Code by Zapier | 1 step(s): Code by Zapier: Custom Code |
+| Ai | 1 step(s): Ai: get_completion |
+| Slack | 1 step(s): Slack: Send Channel Message |
 
 ---
 
@@ -43,61 +43,135 @@ When a **customer support request** comes through Intercom (that isn't handled b
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                         TRIGGER                                  │
-│  Intercom → New Conversation Started                            │
+│                             TRIGGER                             │
+│  1. Intercom: new_conversation                                  │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                         FILTER                                   │
-│  Only continue if:                                              │
-│  • NOT initiated by bot                                         │
-│  • NOT a demo request (handled by other Zap)                    │
-│  • NOT a newsletter signup                                      │
+│                              LOGIC                              │
+│  2. Filter by Zapier: Filter                                    │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                      SLACK NOTIFICATION                         │
-│  Post to #support-requests channel                              │
+│                             ACTIONS                             │
+│  3. Code by Zapier: Custom Code                                 │
+│  4. Ai: get_completion                                          │
+│  5. Slack: Send Channel Message                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Filter Conditions
+## Step-by-Step Breakdown
 
-### Include
-- Conversation type = "user"
-- Source = "messenger" or "email"
+### Step 1: Intercom: new_conversation
 
-### Exclude
-- Bot-initiated conversations
-- Conversations containing "demo" in first message
-- Auto-reply conversations
+| Property | Value |
+|----------|-------|
+| **Type** | ⚡ Trigger |
+| **App** | Intercom |
+| **Action** | new_conversation |
+
+### Step 2: Filter by Zapier: Filter
+
+| Property | Value |
+|----------|-------|
+| **Type** | 🔀 Filter |
+| **App** | Filter by Zapier |
+| **Action** | Filter |
+
+### Step 3: Code by Zapier: Custom Code
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Code by Zapier |
+| **Action** | Custom Code |
+
+### Step 4: Ai: get_completion
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Ai |
+| **Action** | get_completion |
+
+### Step 5: Slack: Send Channel Message
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Slack |
+| **Action** | Send Channel Message |
 
 ---
 
-## Slack Message Format
+## Troubleshooting
 
-**Channel**: #support-requests
+### Common Issues
 
-```
-🆘 New Support Request
+#### Zap Not Triggering
 
-From: John Smith (john@acme.com)
-Company: Acme Corp
-Time: Jan 29, 2026, 2:30 PM
+**Check**:
+1. Verify the trigger app connection is active
+2. Check if the trigger event actually occurred
+3. Review Zap history for filtered out runs
 
-Message Preview:
-"I'm having trouble exporting my data. When I click the export button..."
+#### Step Errors
 
-View in Intercom: [Link]
-```
+**Check**:
+1. Verify app authentication is current
+2. Check if required fields have values
+3. Review error message in Zap history
+
+### Viewing Zap History
+
+1. Open [Zap Editor](https://zapier.com/editor/206743152)
+2. Click "Zap runs" in left sidebar
+3. Review individual runs for errors
 
 ---
 
-## Related Documentation
+## How to Modify
 
-- [Intercom Demo Email / Slack](../intercom_demo_email/README.md) - Demo requests
-- [Intercom Bot Reply / Slack](../intercom_bot_reply/README.md) - Bot interactions
+### Editing Steps
+
+1. Open the Zap in Zapier Editor
+2. Click on the step you want to modify
+3. Update the configuration
+4. Test the step
+5. Publish the changes
+
+### Adding New Steps
+
+1. Click the "+" button between steps
+2. Search for the app you want to add
+3. Configure the action
+4. Map fields from previous steps
+5. Test and publish
+
+### Changing Trigger
+
+⚠️ **Warning**: Changing the trigger may require re-mapping all subsequent steps.
+
+1. Click on the trigger step
+2. Select new trigger event
+3. Reconfigure trigger settings
+4. Review and update all field mappings
+5. Test entire Zap before publishing
+
+---
+
+## Version History
+
+| Date | Changes |
+|------|---------|
+| February 03, 2026 | Last modified |
+| - | Documentation auto-generated |
+
+---
+
+*This documentation was auto-generated from Zapier API data.*
+*Last updated: 2026-02-05 15:01*

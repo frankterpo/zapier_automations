@@ -1,41 +1,40 @@
-# SALES TARGET UPDATE Automation
+# Sales Target Update Automation
 
 > **Status**: ✅ Active (ON)  
-> **Location**: Internal Operations  
-> **Last Modified**: Jan 20, 2026  
-> **Owner**: Dominik Vacikar  
+> **Zap ID**: 247549034  
+> **Steps**: 4  
+> **Last Modified**: January 20, 2026  
+> **Last Successful Run**: December 23, 2024 at 13:41 UTC  
+> **Editor**: [Open in Zapier](https://zapier.com/editor/247549034)
 
 ## Table of Contents
 1. [What This Zap Does](#what-this-zap-does)
-2. [Why This Exists](#why-this-exists)
+2. [Apps Used](#apps-used)
 3. [Flow Architecture](#flow-architecture)
-4. [Update Logic](#update-logic)
-5. [Target Tracking](#target-tracking)
+4. [Step-by-Step Breakdown](#step-by-step-breakdown)
+5. [Troubleshooting](#troubleshooting)
+6. [How to Modify](#how-to-modify)
 
 ---
 
 ## What This Zap Does
 
-This Zap maintains **sales target progress** tracking by:
+This automation is triggered by **Googlesheets** and performs 3 subsequent actions.
 
-1. **Monitoring** HubSpot deal wins
-2. **Calculating** progress toward monthly/quarterly targets
-3. **Updating** Google Sheets sales dashboard
-4. **Tracking** individual rep performance
+**Trigger**: Googlesheets: updated_row
+
+**Main Actions**: Code by Zapier → Slack
 
 ---
 
-## Why This Exists
+## Apps Used
 
-### Business Problem Solved
-- **Target Visibility**: Sales needed real-time target progress
-- **Manual Updates**: Dashboard was always outdated
-- **Motivation**: No gamification or progress tracking
-
-### Value Delivered
-- Real-time target progress percentages
-- Individual rep tracking
-- Monthly/quarterly roll-ups
+| App | Usage in Zap |
+|-----|-------------|
+| Googlesheets | 1 step(s): Googlesheets: updated_row |
+| Filter by Zapier | 1 step(s): Filter by Zapier: Filter |
+| Code by Zapier | 1 step(s): Code by Zapier: Custom Code |
+| Slack | 1 step(s): Slack: Send Channel Message |
 
 ---
 
@@ -43,78 +42,126 @@ This Zap maintains **sales target progress** tracking by:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                         TRIGGER                                  │
-│  HubSpot → Deal Won (Sales Pipeline)                            │
+│                             TRIGGER                             │
+│  1. Googlesheets: updated_row                                   │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                      DATA EXTRACTION                            │
-│  1. Get deal amount                                             │
-│  2. Get deal owner                                              │
-│  3. Get close date (determines period)                          │
+│                              LOGIC                              │
+│  2. Filter by Zapier: Filter                                    │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                     CALCULATION                                  │
-│  4. Add to rep's monthly total                                  │
-│  5. Add to team monthly total                                   │
-│  6. Calculate % of target                                       │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                     GOOGLE SHEETS UPDATE                        │
-│  7. Update individual rep progress                              │
-│  8. Update team totals                                          │
-│  9. Update target % cells                                       │
+│                             ACTIONS                             │
+│  3. Code by Zapier: Custom Code                                 │
+│  4. Slack: Send Channel Message                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Update Logic
+## Step-by-Step Breakdown
 
-### Monthly Target Calculation
+### Step 1: Googlesheets: updated_row
 
-```
-Rep Progress = Sum(Deals Won This Month for Rep)
-Team Progress = Sum(All Deals Won This Month)
-% of Target = (Progress / Target) × 100
-```
+| Property | Value |
+|----------|-------|
+| **Type** | ⚡ Trigger |
+| **App** | Googlesheets |
+| **Action** | updated_row |
 
-### Period Detection
+### Step 2: Filter by Zapier: Filter
 
-Close date determines which period to credit:
-- Close Date in January → January totals
-- Close Date in Q1 → Q1 totals
+| Property | Value |
+|----------|-------|
+| **Type** | 🔀 Filter |
+| **App** | Filter by Zapier |
+| **Action** | Filter |
 
----
+### Step 3: Code by Zapier: Custom Code
 
-## Target Tracking
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Code by Zapier |
+| **Action** | Custom Code |
 
-### Google Sheets Structure
+### Step 4: Slack: Send Channel Message
 
-#### Individual Targets
-| Rep | Monthly Target | MTD Won | % Progress |
-|-----|---------------|---------|------------|
-| Marco | €100,000 | €45,000 | 45% |
-| Philipp | €75,000 | €60,000 | 80% |
-| Isabella | €75,000 | €30,000 | 40% |
-
-#### Team Summary
-| Metric | Value |
-|--------|-------|
-| Team Monthly Target | €250,000 |
-| Team MTD Won | €135,000 |
-| Team % Progress | 54% |
-| Days Left in Month | 15 |
-| Required Run Rate | €7,667/day |
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Slack |
+| **Action** | Send Channel Message |
 
 ---
 
-## Related Documentation
+## Troubleshooting
 
-- [ARR UPDATE](../arr_update/README.md) - Overall revenue tracking
-- [Deal Signed](../deal_signed/README.md) - Individual deal wins
+### Common Issues
+
+#### Zap Not Triggering
+
+**Check**:
+1. Verify the trigger app connection is active
+2. Check if the trigger event actually occurred
+3. Review Zap history for filtered out runs
+
+#### Step Errors
+
+**Check**:
+1. Verify app authentication is current
+2. Check if required fields have values
+3. Review error message in Zap history
+
+### Viewing Zap History
+
+1. Open [Zap Editor](https://zapier.com/editor/247549034)
+2. Click "Zap runs" in left sidebar
+3. Review individual runs for errors
+
+---
+
+## How to Modify
+
+### Editing Steps
+
+1. Open the Zap in Zapier Editor
+2. Click on the step you want to modify
+3. Update the configuration
+4. Test the step
+5. Publish the changes
+
+### Adding New Steps
+
+1. Click the "+" button between steps
+2. Search for the app you want to add
+3. Configure the action
+4. Map fields from previous steps
+5. Test and publish
+
+### Changing Trigger
+
+⚠️ **Warning**: Changing the trigger may require re-mapping all subsequent steps.
+
+1. Click on the trigger step
+2. Select new trigger event
+3. Reconfigure trigger settings
+4. Review and update all field mappings
+5. Test entire Zap before publishing
+
+---
+
+## Version History
+
+| Date | Changes |
+|------|---------|
+| January 20, 2026 | Last modified |
+| - | Documentation auto-generated |
+
+---
+
+*This documentation was auto-generated from Zapier API data.*
+*Last updated: 2026-02-05 15:01*

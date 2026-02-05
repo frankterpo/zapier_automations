@@ -1,32 +1,43 @@
-# Product Import Data Requests
+# Product Import Requests Automation
 
-> **Status**: ✅ Active (ON)  
-> **Location**: Leads  
-> **Last Modified**: Sep 1, 2025  
-> **Owner**: Dominik Vacikar  
+> **Status**: ⏸️ Paused (OFF)  
+> **Zap ID**: 203988472  
+> **Steps**: 13  
+> **Last Modified**: December 26, 2025  
+> **Last Successful Run**: January 20, 2025 at 12:37 UTC  
+> **Editor**: [Open in Zapier](https://zapier.com/editor/203988472)
 
-## What This Zap Does
-
-Handles **data import requests** from the Specter product:
-
-1. **Receives** webhook when user requests data import
-2. **Creates/Updates** HubSpot contact and deal
-3. **Logs** request to Google Sheets
-4. **Notifies** team via Slack
+## Table of Contents
+1. [What This Zap Does](#what-this-zap-does)
+2. [Apps Used](#apps-used)
+3. [Flow Architecture](#flow-architecture)
+4. [Step-by-Step Breakdown](#step-by-step-breakdown)
+5. [Troubleshooting](#troubleshooting)
+6. [How to Modify](#how-to-modify)
 
 ---
 
-## Why This Exists
+## What This Zap Does
 
-### Business Problem Solved
-- Data import requests weren't tracked as leads
-- Sales missed upsell opportunities
-- No visibility into product usage signals
+This automation is triggered by **Slack** and performs 12 subsequent actions.
 
-### Value Delivered
-- Every import request becomes a sales signal
-- Upsell opportunity identification
-- Product usage tracking
+**Trigger**: Slack: Send Channel Message
+
+**Main Actions**: Googlesheets → Notion → Code by Zapier → Zapierformatter
+
+---
+
+## Apps Used
+
+| App | Usage in Zap |
+|-----|-------------|
+| Slack | 1 step(s): Slack: Send Channel Message |
+| Googlesheets | 2 step(s): Googlesheets: Create Spreadsheet Row, Googlesheets: Create Spreadsheet Row |
+| Notion | 2 step(s): Notion: create_database_item, Notion: create_database_item |
+| Code by Zapier | 2 step(s): Code by Zapier: Custom Code, Code by Zapier: Custom Code |
+| Zapierformatter | 2 step(s): Zapierformatter: text_line_item, Zapierformatter: text_line_item |
+| Branching | 3 step(s): Branching: Filter, Branching: Filter, Branching: branch |
+| Filter by Zapier | 1 step(s): Filter by Zapier: Filter |
 
 ---
 
@@ -34,83 +45,217 @@ Handles **data import requests** from the Specter product:
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                         TRIGGER                                  │
-│  Webhook → Data Import Request from Product                     │
+│                             TRIGGER                             │
+│  1. Slack: Send Channel Message                                 │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                      DATA PREPARATION                           │
-│  1. Parse webhook payload                                       │
-│  2. Extract user info and import details                        │
+│                             ACTIONS                             │
+│  2. Googlesheets: Create Spreadsheet Row                        │
+│  3. Googlesheets: Create Spreadsheet Row                        │
+│  4. Notion: create_database_item                                │
+│  5. Code by Zapier: Custom Code                                 │
+│  6. Zapierformatter: text_line_item                             │
+│  7. Zapierformatter: text_line_item                             │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                    HUBSPOT ENRICHMENT                           │
-│  3. Find/Create Contact                                         │
-│  4. Find/Create Company                                         │
-│  5. Create/Update Deal with import flag                         │
+│                              LOGIC                              │
+│  8. Branching: Filter                                           │
+│  9. Branching: Filter                                           │
+│  10. Branching: branch                                           │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                      LOGGING & NOTIFICATIONS                    │
-│  6. Google Sheets: Log import request                           │
-│  7. Slack: Notify #product-activity                             │
+│                             ACTIONS                             │
+│  11. Notion: create_database_item                                │
+│  12. Code by Zapier: Custom Code                                 │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                              LOGIC                              │
+│  13. Filter by Zapier: Filter                                    │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Trigger
+## Step-by-Step Breakdown
 
-**Type**: Webhook (Catch Hook)  
-**Source**: Specter product backend  
-**Event**: User requests data import
-
-### Expected Payload
-
-```json
-{
-  "email": "john@acme.com",
-  "user_id": "usr_123",
-  "import_type": "company_data",
-  "record_count": 500,
-  "timestamp": "2026-01-29T14:30:00Z"
-}
-```
-
----
-
-## HubSpot Properties Set
+### Step 1: Slack: Send Channel Message
 
 | Property | Value |
 |----------|-------|
-| `data_import_requested` | true |
-| `import_type` | From webhook |
-| `import_record_count` | From webhook |
-| `last_import_request_date` | Timestamp |
+| **Type** | ⚡ Trigger |
+| **App** | Slack |
+| **Action** | Send Channel Message |
+
+### Step 2: Googlesheets: Create Spreadsheet Row
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Googlesheets |
+| **Action** | Create Spreadsheet Row |
+
+### Step 3: Googlesheets: Create Spreadsheet Row
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Googlesheets |
+| **Action** | Create Spreadsheet Row |
+
+### Step 4: Notion: create_database_item
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Notion |
+| **Action** | create_database_item |
+
+### Step 5: Code by Zapier: Custom Code
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Code by Zapier |
+| **Action** | Custom Code |
+
+### Step 6: Zapierformatter: text_line_item
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Zapierformatter |
+| **Action** | text_line_item |
+
+### Step 7: Zapierformatter: text_line_item
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Zapierformatter |
+| **Action** | text_line_item |
+
+### Step 8: Branching: Filter
+
+| Property | Value |
+|----------|-------|
+| **Type** | 🔀 Path |
+| **App** | Branching |
+| **Action** | Filter |
+
+### Step 9: Branching: Filter
+
+| Property | Value |
+|----------|-------|
+| **Type** | 🔀 Path |
+| **App** | Branching |
+| **Action** | Filter |
+
+### Step 10: Branching: branch
+
+| Property | Value |
+|----------|-------|
+| **Type** | 🔀 Path |
+| **App** | Branching |
+| **Action** | branch |
+
+### Step 11: Notion: create_database_item
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Notion |
+| **Action** | create_database_item |
+
+### Step 12: Code by Zapier: Custom Code
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Code by Zapier |
+| **Action** | Custom Code |
+
+### Step 13: Filter by Zapier: Filter
+
+| Property | Value |
+|----------|-------|
+| **Type** | 🔀 Filter |
+| **App** | Filter by Zapier |
+| **Action** | Filter |
 
 ---
 
-## Slack Notification
+## Troubleshooting
 
-**Channel**: #product-activity
+### Common Issues
 
-```
-📊 Data Import Request
+#### Zap Not Triggering
 
-User: john@acme.com
-Import Type: Company Data
-Records: 500
+**Check**:
+1. Verify the trigger app connection is active
+2. Check if the trigger event actually occurred
+3. Review Zap history for filtered out runs
 
-View in HubSpot: [Link]
-```
+#### Step Errors
+
+**Check**:
+1. Verify app authentication is current
+2. Check if required fields have values
+3. Review error message in Zap history
+
+### Viewing Zap History
+
+1. Open [Zap Editor](https://zapier.com/editor/203988472)
+2. Click "Zap runs" in left sidebar
+3. Review individual runs for errors
 
 ---
 
-## Related Documentation
+## How to Modify
 
-- [Product Sign Ups](../product_sign_ups/README.md) - Initial sign-up flow
-- [Demo Requests](../demo_requests/README.md) - Form-based leads
+### Editing Steps
+
+1. Open the Zap in Zapier Editor
+2. Click on the step you want to modify
+3. Update the configuration
+4. Test the step
+5. Publish the changes
+
+### Adding New Steps
+
+1. Click the "+" button between steps
+2. Search for the app you want to add
+3. Configure the action
+4. Map fields from previous steps
+5. Test and publish
+
+### Changing Trigger
+
+⚠️ **Warning**: Changing the trigger may require re-mapping all subsequent steps.
+
+1. Click on the trigger step
+2. Select new trigger event
+3. Reconfigure trigger settings
+4. Review and update all field mappings
+5. Test entire Zap before publishing
+
+---
+
+## Version History
+
+| Date | Changes |
+|------|---------|
+| December 26, 2025 | Last modified |
+| - | Documentation auto-generated |
+
+---
+
+*This documentation was auto-generated from Zapier API data.*
+*Last updated: 2026-02-05 14:32*

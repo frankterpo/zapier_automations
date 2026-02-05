@@ -1,0 +1,18 @@
+{
+  "extracted_at": "2026-02-05T13:37:22.656179",
+  "source": "Zapier Internal API v4",
+  "total": 0,
+  "active": 0,
+  "disabled": 0,
+  "zaps": [],
+  "by_category": {
+    "sales": [],
+    "finance": [],
+    "communication": [],
+    "delivery": [],
+    "marketing": [],
+    "crm": [],
+    "product": [],
+    "other": []
+  }
+}

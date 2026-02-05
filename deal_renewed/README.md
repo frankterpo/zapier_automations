@@ -1,41 +1,42 @@
 # Deal Renewed Automation
 
 > **Status**: ✅ Active (ON)  
-> **Location**: Internal Operations  
-> **Last Modified**: Oct 20, 2025  
-> **Owner**: Dominik Vacikar  
+> **Zap ID**: 236426171  
+> **Steps**: 7  
+> **Last Modified**: December 08, 2025  
+> **Last Successful Run**: September 01, 2025 at 14:32 UTC  
+> **Editor**: [Open in Zapier](https://zapier.com/editor/236426171)
 
 ## Table of Contents
 1. [What This Zap Does](#what-this-zap-does)
-2. [Why This Exists](#why-this-exists)
+2. [Apps Used](#apps-used)
 3. [Flow Architecture](#flow-architecture)
-4. [Trigger Conditions](#trigger-conditions)
-5. [Notifications](#notifications)
+4. [Step-by-Step Breakdown](#step-by-step-breakdown)
+5. [Troubleshooting](#troubleshooting)
+6. [How to Modify](#how-to-modify)
 
 ---
 
 ## What This Zap Does
 
-When an existing customer **renews** their contract (deal stage = "Renewed" in Renewals pipeline), this Zap:
+This automation is triggered by **HubSpot** and performs 6 subsequent actions.
 
-1. **Captures** the renewal deal data
-2. **Logs** renewal to Google Sheets (finance tracking)
-3. **Celebrates** with Slack notification
-4. **Updates** company lifecycle properties
+**Trigger**: HubSpot: updated_deal_stage
+
+**Main Actions**: Zapierformatter → Ai → Code by Zapier → Slack → Googlesheets
 
 ---
 
-## Why This Exists
+## Apps Used
 
-### Business Problem Solved
-- **Visibility**: Team wasn't tracking renewal wins
-- **Finance**: Manual ARR tracking for renewals
-- **Churn Prevention**: No systematic renewal process
-
-### Value Delivered
-- Real-time renewal tracking
-- Automated ARR adjustments
-- Team visibility on customer success
+| App | Usage in Zap |
+|-----|-------------|
+| HubSpot | 1 step(s): HubSpot: updated_deal_stage |
+| Zapierformatter | 1 step(s): Zapierformatter: text_line_item |
+| Ai | 1 step(s): Ai: get_completion |
+| Code by Zapier | 2 step(s): Code by Zapier: Custom Code, Code by Zapier: Custom Code |
+| Slack | 1 step(s): Slack: Send Channel Message |
+| Googlesheets | 1 step(s): Googlesheets: Create Spreadsheet Row |
 
 ---
 
@@ -43,94 +44,148 @@ When an existing customer **renews** their contract (deal stage = "Renewed" in R
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                         TRIGGER                                  │
-│  HubSpot → Deal in Renewals Pipeline → "Renewed" Stage          │
+│                             TRIGGER                             │
+│  1. HubSpot: updated_deal_stage                                 │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                      DATA EXTRACTION                            │
-│  1. Get deal properties (amount, products, owner)               │
-│  2. Get associated company                                      │
-│  3. Calculate renewal year (Y2, Y3, etc.)                       │
-└─────────────────────────────────────────────────────────────────┘
-                              │
-                              ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                     LOGGING & NOTIFICATIONS                     │
-│  4. Google Sheets: Log to Renewals tracker                      │
-│  5. Slack: Post renewal celebration                             │
-│  6. Update company: renewal_date, customer status               │
+│                             ACTIONS                             │
+│  2. Zapierformatter: text_line_item                             │
+│  3. Ai: get_completion                                          │
+│  4. Code by Zapier: Custom Code                                 │
+│  5. Code by Zapier: Custom Code                                 │
+│  6. Slack: Send Channel Message                                 │
+│  7. Googlesheets: Create Spreadsheet Row                        │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Trigger Conditions
+## Step-by-Step Breakdown
 
-**App**: HubSpot  
-**Event**: Deal property changed  
-**Pipeline**: Renewals (`88620615`)  
-**Stage**: Renewed
+### Step 1: HubSpot: updated_deal_stage
 
-### Renewals Pipeline Stages
+| Property | Value |
+|----------|-------|
+| **Type** | ⚡ Trigger |
+| **App** | HubSpot |
+| **Action** | updated_deal_stage |
 
-| Stage | Description |
-|-------|-------------|
-| New Client | Just signed, in onboarding |
-| 11-9M to Renewal | 11-9 months before renewal |
-| 9-6M to Renewal | 9-6 months before renewal |
-| 6-3M to Renewal | 6-3 months before renewal |
-| 3-2M to Renewal | 3-2 months before renewal |
-| 1M to Renewal | 1 month before renewal |
-| Renewal Action | Active renewal negotiation |
-| **Renewed** | ✅ Deal renewed (triggers this Zap) |
-| Churned | ❌ Customer did not renew |
+### Step 2: Zapierformatter: text_line_item
 
----
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Zapierformatter |
+| **Action** | text_line_item |
 
-## Notifications
+### Step 3: Ai: get_completion
 
-### Slack Message Format
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Ai |
+| **Action** | get_completion |
 
-```
-🔄 RENEWAL COMPLETE! 🔄
+### Step 4: Code by Zapier: Custom Code
 
-Company: Acme Corp
-Renewal Year: Y2
-Amount: €50,000
-Products: Company Database, People Database
-CS Owner: Isabella Garcia Foster
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Code by Zapier |
+| **Action** | Custom Code |
 
-View Deal: [HubSpot Link]
-```
+### Step 5: Code by Zapier: Custom Code
 
-### Google Sheets Logging
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Code by Zapier |
+| **Action** | Custom Code |
 
-| Column | Value |
-|--------|-------|
-| Date | Auto-timestamp |
-| Company | Company name |
-| Deal Name | Company - Y2 |
-| Amount | Deal amount |
-| Products | Product list |
-| Owner | Deal owner name |
-| Year | Renewal year number |
+### Step 6: Slack: Send Channel Message
 
----
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Slack |
+| **Action** | Send Channel Message |
 
-## Differences from Deal Signed
+### Step 7: Googlesheets: Create Spreadsheet Row
 
-| Aspect | Deal Signed | Deal Renewed |
-|--------|-------------|--------------|
-| Pipeline | Sales | Renewals |
-| Stage | Won | Renewed |
-| Slack Channel | #sales-wins | #cs-renewals |
-| Purpose | New customer | Existing customer |
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Googlesheets |
+| **Action** | Create Spreadsheet Row |
 
 ---
 
-## Related Documentation
+## Troubleshooting
 
-- [Deal Signed](../deal_signed/README.md) - New customer wins
-- [ARR UPDATE](../arr_update/README.md) - Financial tracking
+### Common Issues
+
+#### Zap Not Triggering
+
+**Check**:
+1. Verify the trigger app connection is active
+2. Check if the trigger event actually occurred
+3. Review Zap history for filtered out runs
+
+#### Step Errors
+
+**Check**:
+1. Verify app authentication is current
+2. Check if required fields have values
+3. Review error message in Zap history
+
+### Viewing Zap History
+
+1. Open [Zap Editor](https://zapier.com/editor/236426171)
+2. Click "Zap runs" in left sidebar
+3. Review individual runs for errors
+
+---
+
+## How to Modify
+
+### Editing Steps
+
+1. Open the Zap in Zapier Editor
+2. Click on the step you want to modify
+3. Update the configuration
+4. Test the step
+5. Publish the changes
+
+### Adding New Steps
+
+1. Click the "+" button between steps
+2. Search for the app you want to add
+3. Configure the action
+4. Map fields from previous steps
+5. Test and publish
+
+### Changing Trigger
+
+⚠️ **Warning**: Changing the trigger may require re-mapping all subsequent steps.
+
+1. Click on the trigger step
+2. Select new trigger event
+3. Reconfigure trigger settings
+4. Review and update all field mappings
+5. Test entire Zap before publishing
+
+---
+
+## Version History
+
+| Date | Changes |
+|------|---------|
+| December 08, 2025 | Last modified |
+| - | Documentation auto-generated |
+
+---
+
+*This documentation was auto-generated from Zapier API data.*
+*Last updated: 2026-02-05 15:01*

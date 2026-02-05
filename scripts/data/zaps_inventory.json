@@ -1,0 +1,509 @@
+{
+  "extracted_at": "2026-02-05T13:40:50.857880",
+  "source": "Zapier API v4 (browser)",
+  "total": 50,
+  "active": 29,
+  "disabled": 21,
+  "zaps": [
+    {
+      "id": 341760432,
+      "title": "etn. Demo Requests (Getform > Sheets > Hubspot > Slack)",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": "2026-01-05T13:51:06+00:00",
+      "lastchanged": "2026-02-03T08:59:33+00:00",
+      "url": "https://zapier.com/editor/341760432",
+      "category": "sales"
+    },
+    {
+      "id": 340050649,
+      "title": "(Copy) Product Sign Ups",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2025-12-26T23:14:27+00:00",
+      "url": "https://zapier.com/editor/340050649",
+      "category": "product"
+    },
+    {
+      "id": 330771370,
+      "title": "(Copy) Demo Requests (Getform > Sheets > Hubspot > Slack)",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2025-11-02T01:29:12+00:00",
+      "url": "https://zapier.com/editor/330771370",
+      "category": "sales"
+    },
+    {
+      "id": 316909720,
+      "title": "Sequence",
+      "state": "draft",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2025-12-08T09:14:38+00:00",
+      "url": "https://zapier.com/editor/316909720",
+      "category": "other"
+    },
+    {
+      "id": 315618826,
+      "title": "500+ Startups in Biotechnology 2025 [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-15T19:17:10+00:00",
+      "lastchanged": "2025-08-15T19:20:49+00:00",
+      "url": "https://zapier.com/editor/315618826",
+      "category": "marketing"
+    },
+    {
+      "id": 315618491,
+      "title": "Gaming X AI Landscape 2025 [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-15T19:14:19+00:00",
+      "lastchanged": "2025-08-15T19:14:19+00:00",
+      "url": "https://zapier.com/editor/315618491",
+      "category": "marketing"
+    },
+    {
+      "id": 315618400,
+      "title": "Euro Seed 50 by Creandum [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-15T19:11:56+00:00",
+      "lastchanged": "2025-08-15T19:11:57+00:00",
+      "url": "https://zapier.com/editor/315618400",
+      "category": "marketing"
+    },
+    {
+      "id": 315617895,
+      "title": "200+ Thiel Fellows [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-15T19:09:14+00:00",
+      "lastchanged": "2025-08-15T19:18:49+00:00",
+      "url": "https://zapier.com/editor/315617895",
+      "category": "marketing"
+    },
+    {
+      "id": 315617071,
+      "title": "590+ AI x Fintech Landscape [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-15T19:07:14+00:00",
+      "lastchanged": "2025-08-15T19:21:33+00:00",
+      "url": "https://zapier.com/editor/315617071",
+      "category": "marketing"
+    },
+    {
+      "id": 315617004,
+      "title": "500+ Restaurant Tech Landscape [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-15T19:05:56+00:00",
+      "lastchanged": "2025-08-15T19:20:33+00:00",
+      "url": "https://zapier.com/editor/315617004",
+      "category": "marketing"
+    },
+    {
+      "id": 315616371,
+      "title": "400+ Legal AI Landscape [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-15T19:02:54+00:00",
+      "lastchanged": "2025-08-15T19:19:20+00:00",
+      "url": "https://zapier.com/editor/315616371",
+      "category": "marketing"
+    },
+    {
+      "id": 315615851,
+      "title": "1000+ YC Requested Startups Fall 2025 [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-15T19:00:33+00:00",
+      "lastchanged": "2025-08-15T19:18:08+00:00",
+      "url": "https://zapier.com/editor/315615851",
+      "category": "marketing"
+    },
+    {
+      "id": 315615297,
+      "title": "500+ Bio-Infra Landscape 2025 [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-15T18:57:28+00:00",
+      "lastchanged": "2025-08-15T19:19:54+00:00",
+      "url": "https://zapier.com/editor/315615297",
+      "category": "marketing"
+    },
+    {
+      "id": 315613284,
+      "title": "AI x GTM Landscape 2025 [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-15T18:53:24+00:00",
+      "lastchanged": "2025-08-15T19:44:56+00:00",
+      "url": "https://zapier.com/editor/315613284",
+      "category": "marketing"
+    },
+    {
+      "id": 305056623,
+      "title": "Untitled Zap",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2025-12-08T09:14:38+00:00",
+      "url": "https://zapier.com/editor/305056623",
+      "category": "other"
+    },
+    {
+      "id": 304605890,
+      "title": "Fungi Industry 2025 [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-06-18T16:50:40+00:00",
+      "lastchanged": "2025-06-18T16:50:41+00:00",
+      "url": "https://zapier.com/editor/304605890",
+      "category": "marketing"
+    },
+    {
+      "id": 304605378,
+      "title": "Data 3.0 Landscape 2025 [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-06-18T16:49:12+00:00",
+      "lastchanged": "2025-06-18T16:49:13+00:00",
+      "url": "https://zapier.com/editor/304605378",
+      "category": "marketing"
+    },
+    {
+      "id": 300616653,
+      "title": "Auto-set: Previous Customer / Customer",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-05-29T16:06:36+00:00",
+      "lastchanged": "2025-12-08T09:14:38+00:00",
+      "url": "https://zapier.com/editor/300616653",
+      "category": "crm"
+    },
+    {
+      "id": 297255756,
+      "title": "YC Requests for Startups 2025 [Landscape]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-05-13T11:28:59+00:00",
+      "lastchanged": "2025-05-13T11:28:59+00:00",
+      "url": "https://zapier.com/editor/297255756",
+      "category": "marketing"
+    },
+    {
+      "id": 294887963,
+      "title": "EU Sustainability Startups 2025 [Landscape]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-04-30T11:17:59+00:00",
+      "lastchanged": "2025-04-30T11:18:00+00:00",
+      "url": "https://zapier.com/editor/294887963",
+      "category": "marketing"
+    },
+    {
+      "id": 294385300,
+      "title": "Forbes 2025 AI 50 [Landscape]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-04-28T09:35:26+00:00",
+      "lastchanged": "2025-04-28T09:35:26+00:00",
+      "url": "https://zapier.com/editor/294385300",
+      "category": "marketing"
+    },
+    {
+      "id": 290841757,
+      "title": "Startups Positioned to Benefit from Tariffs [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-04-08T14:13:09+00:00",
+      "lastchanged": "2025-04-08T14:13:17+00:00",
+      "url": "https://zapier.com/editor/290841757",
+      "category": "marketing"
+    },
+    {
+      "id": 285639705,
+      "title": "Award Years 2025 2025 [Landscape]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-03-11T22:15:04+00:00",
+      "lastchanged": "2025-06-02T16:14:33+00:00",
+      "url": "https://zapier.com/editor/285639705",
+      "category": "marketing"
+    },
+    {
+      "id": 285507685,
+      "title": "EU Defence Startups 2025 [Landscape]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-03-11T15:53:05+00:00",
+      "lastchanged": "2025-06-02T16:03:03+00:00",
+      "url": "https://zapier.com/editor/285507685",
+      "category": "marketing"
+    },
+    {
+      "id": 284748205,
+      "title": "Landscape Submissions [Hubspot]",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": "2025-03-07T09:46:12+00:00",
+      "lastchanged": "2025-08-18T17:03:52+00:00",
+      "url": "https://zapier.com/editor/284748205",
+      "category": "marketing"
+    },
+    {
+      "id": 284216410,
+      "title": "LATAM AI Startups 2025 [Landscape]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-03-04T16:22:49+00:00",
+      "lastchanged": "2025-03-04T16:22:50+00:00",
+      "url": "https://zapier.com/editor/284216410",
+      "category": "marketing"
+    },
+    {
+      "id": 283549777,
+      "title": "The Next Lovable [Download]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-02-28T10:12:25+00:00",
+      "lastchanged": "2025-02-28T10:12:26+00:00",
+      "url": "https://zapier.com/editor/283549777",
+      "category": "marketing"
+    },
+    {
+      "id": 282601449,
+      "title": "French AI Startups 2025 [Landscape]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-02-28T10:12:02+00:00",
+      "lastchanged": "2025-02-28T10:12:02+00:00",
+      "url": "https://zapier.com/editor/282601449",
+      "category": "marketing"
+    },
+    {
+      "id": 282198574,
+      "title": "Untitled Zap",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2025-02-21T11:57:12+00:00",
+      "url": "https://zapier.com/editor/282198574",
+      "category": "other"
+    },
+    {
+      "id": 281260324,
+      "title": "AI Agents Ecosystem 2025 [Landscape]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-22T08:51:46+00:00",
+      "lastchanged": "2025-08-22T08:51:47+00:00",
+      "url": "https://zapier.com/editor/281260324",
+      "category": "marketing"
+    },
+    {
+      "id": 281259358,
+      "title": "AI Voice Agents 2025 [Landscape]",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-22T08:45:10+00:00",
+      "lastchanged": "2025-08-22T08:45:11+00:00",
+      "url": "https://zapier.com/editor/281259358",
+      "category": "marketing"
+    },
+    {
+      "id": 275042989,
+      "title": "[OLD] Closed Lost Notes",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": "2025-01-13T11:50:10+00:00",
+      "lastchanged": "2025-12-08T09:14:38+00:00",
+      "url": "https://zapier.com/editor/275042989",
+      "category": "other"
+    },
+    {
+      "id": 268969745,
+      "title": "Product Sign Ups",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-12-19T14:58:48+00:00",
+      "lastchanged": "2026-01-19T16:13:04+00:00",
+      "url": "https://zapier.com/editor/268969745",
+      "category": "product"
+    },
+    {
+      "id": 266596665,
+      "title": "Intercom Bot Reply / Slack",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": "2025-11-05T19:34:18+00:00",
+      "lastchanged": "2026-01-20T14:08:13+00:00",
+      "url": "https://zapier.com/editor/266596665",
+      "category": "communication"
+    },
+    {
+      "id": 262386682,
+      "title": "Demo Requests (Getform > Sheets > Hubspot > Slack)",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-08-06T19:24:25+00:00",
+      "lastchanged": "2026-02-04T17:35:08+00:00",
+      "url": "https://zapier.com/editor/262386682",
+      "category": "sales"
+    },
+    {
+      "id": 258399952,
+      "title": "Untitled Zap",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2026-01-20T14:08:13+00:00",
+      "url": "https://zapier.com/editor/258399952",
+      "category": "other"
+    },
+    {
+      "id": 256218594,
+      "title": "Untitled",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2024-09-03T12:47:16+00:00",
+      "url": "https://zapier.com/editor/256218594",
+      "category": "other"
+    },
+    {
+      "id": 256217976,
+      "title": "Untitled",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2024-09-03T12:43:07+00:00",
+      "url": "https://zapier.com/editor/256217976",
+      "category": "other"
+    },
+    {
+      "id": 247549034,
+      "title": "SALES TARGET UPDATE",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2024-12-23T13:41:11+00:00",
+      "lastchanged": "2026-01-20T12:15:01+00:00",
+      "url": "https://zapier.com/editor/247549034",
+      "category": "finance"
+    },
+    {
+      "id": 240869492,
+      "title": "Contacts to Deals Associations",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": "2024-07-04T08:15:27+00:00",
+      "lastchanged": "2025-12-08T09:14:38+00:00",
+      "url": "https://zapier.com/editor/240869492",
+      "category": "crm"
+    },
+    {
+      "id": 238817664,
+      "title": "Create Friday Delivery Tasks on Linear",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": "2024-05-07T11:04:00+00:00",
+      "lastchanged": "2025-08-08T17:25:27+00:00",
+      "url": "https://zapier.com/editor/238817664",
+      "category": "delivery"
+    },
+    {
+      "id": 236426171,
+      "title": "Deal Renewed",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2025-09-01T14:32:44+00:00",
+      "lastchanged": "2025-12-08T09:14:38+00:00",
+      "url": "https://zapier.com/editor/236426171",
+      "category": "crm"
+    },
+    {
+      "id": 222334438,
+      "title": "Untitled",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2024-01-18T16:18:21+00:00",
+      "url": "https://zapier.com/editor/222334438",
+      "category": "other"
+    },
+    {
+      "id": 221501891,
+      "title": "Website Email Newsletter Signups ",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": "2024-01-12T09:37:14+00:00",
+      "lastchanged": "2025-07-01T09:48:50+00:00",
+      "url": "https://zapier.com/editor/221501891",
+      "category": "product"
+    },
+    {
+      "id": 213215138,
+      "title": "Notify Slack on Wise Business transactions",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2023-11-01T14:07:33+00:00",
+      "url": "https://zapier.com/editor/213215138",
+      "category": "communication"
+    },
+    {
+      "id": 210986857,
+      "title": "Untitled Zap",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2023-10-19T10:57:57+00:00",
+      "url": "https://zapier.com/editor/210986857",
+      "category": "other"
+    },
+    {
+      "id": 210371641,
+      "title": "Sync Specter leads to Pipedrive",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2023-10-13T16:14:17+00:00",
+      "url": "https://zapier.com/editor/210371641",
+      "category": "other"
+    },
+    {
+      "id": 207159090,
+      "title": "Untitled",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2026-01-20T14:08:13+00:00",
+      "url": "https://zapier.com/editor/207159090",
+      "category": "other"
+    },
+    {
+      "id": 207158873,
+      "title": "Untitled",
+      "state": "off",
+      "is_enabled": false,
+      "last_live_at": null,
+      "lastchanged": "2026-01-20T14:08:13+00:00",
+      "url": "https://zapier.com/editor/207158873",
+      "category": "other"
+    },
+    {
+      "id": 207157349,
+      "title": "Intercom Demo Email / Slack",
+      "state": "on",
+      "is_enabled": true,
+      "last_live_at": "2024-07-19T14:11:29+00:00",
+      "lastchanged": "2025-10-07T09:42:49+00:00",
+      "url": "https://zapier.com/editor/207157349",
+      "category": "sales"
+    }
+  ]
+}

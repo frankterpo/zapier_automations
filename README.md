@@ -1,219 +1,332 @@
 # Zapier Automations Documentation
 
-> Last Updated: January 29, 2026  
-> Account: Dominik Vacikar Individual (Professional Plan)
+> **Last Updated**: February 5, 2026  
+> **Account**: Dominik Vacikar Individual (Professional Plan)  
+> **Total Active Zaps**: 32  
+> **Key Business Zaps**: 9  
 
 ## Overview
 
-This documentation covers all **active** Zapier automations for Specter. Only active (ON) Zaps are documented here. Legacy and disabled Zaps are listed separately.
+This documentation covers all **active** Zapier automations for Specter. Automations are auto-documented from the Zapier API with full step details.
 
 ---
 
-## Quick Navigation
+## Quick Stats
 
-### Critical Business Automations
-
-| Zap | Purpose | Documentation |
-|-----|---------|---------------|
-| **Demo Requests** | Primary inbound lead processing | [README](demo_requests/README.md) |
-| **Deal Signed** | Won deal notifications & finance logging | [README](deal_signed/README.md) |
-| **Deal Renewed** | Renewal tracking & celebration | [README](deal_renewed/README.md) |
-| **Product Sign Ups** | Self-serve signup tracking | [README](product_sign_ups/README.md) |
-| **ARR UPDATE** | Real-time ARR tracking | [README](arr_update/README.md) |
-| **SALES TARGET UPDATE** | Target progress tracking | [README](sales_target_update/README.md) |
-
-### Communication Automations
-
-| Zap | Purpose | Documentation |
-|-----|---------|---------------|
-| **Intercom Request / Slack** | Support request alerts | [README](intercom_request_slack/README.md) |
-| **Intercom Demo Email / Slack** | Intercom demo request routing | [README](intercom_demo_email/README.md) |
-| **Intercom Bot Reply / Slack** | Bot conversation alerts | [README](intercom_bot_reply/README.md) |
-
-### HubSpot Data Automations
-
-| Zap | Purpose | Documentation |
-|-----|---------|---------------|
-| **Auto-set: Previous Customer / Customer** | Lifecycle stage management | [README](auto_set_lifecycle/README.md) |
-| **Contacts to Deals Associations** | Association creation | [README](contacts_deals_associations/README.md) |
-| **Product Import Data Requests** | Import request tracking | [README](product_import_requests/README.md) |
+| Metric | Value |
+|--------|-------|
+| Active Zaps | 32 |
+| Key Business Automations | 9 |
+| Landscape/Download Handlers | 23 |
+| Total Steps (all zaps) | ~200 |
+| Most Complex Zap | Demo Requests (76 steps) |
 
 ---
 
-## Architecture Overview
+## Key Business Automations
 
-```
-                    ┌──────────────┐
-                    │   TRIGGERS   │
-                    └──────────────┘
-                          │
-        ┌─────────────────┼─────────────────┐
-        │                 │                 │
-        ▼                 ▼                 ▼
-   ┌─────────┐      ┌──────────┐     ┌──────────┐
-   │ GetForm │      │ HubSpot  │     │ Intercom │
-   │ Webhook │      │ Webhooks │     │ Messages │
-   └────┬────┘      └────┬─────┘     └────┬─────┘
-        │                │                 │
-        └────────────────┼─────────────────┘
-                         │
-                         ▼
-              ┌────────────────────┐
-              │   PROCESSING       │
-              │  • Formatter       │
-              │  • Code by Zapier  │
-              │  • Filters         │
-              └────────────────────┘
-                         │
-        ┌────────────────┼────────────────┐
-        │                │                │
-        ▼                ▼                ▼
-   ┌─────────┐     ┌──────────┐    ┌──────────┐
-   │ HubSpot │     │  Slack   │    │  Sheets  │
-   │   CRM   │     │  Alerts  │    │  Logging │
-   └─────────┘     └──────────┘    └──────────┘
-```
+### Sales & Lead Processing
 
----
-
-## Zap Categories
-
-### Sales & CRM
-Automations that process leads and manage the sales pipeline.
-
-- **[Demo Requests](demo_requests/README.md)** - 76 steps, v117
-  - Trigger: GetForm submission
-  - Actions: HubSpot enrichment, lead classification, owner assignment
-  - Notifications: Slack, Gmail
-
-- **[Deal Signed](deal_signed/README.md)** - Active
-  - Trigger: HubSpot deal → Won
-  - Actions: Product mapping, finance logging
-  - Notifications: Slack celebration
-
-- **[Deal Renewed](deal_renewed/README.md)** - Active
-  - Trigger: HubSpot deal → Renewed
-  - Actions: Finance logging, renewal tracking
-  - Notifications: Slack celebration
-
-- **[Product Sign Ups](product_sign_ups/README.md)** - Active
-  - Trigger: Webhook from product backend
-  - Actions: HubSpot contact/company/deal creation
-  - Notifications: Slack, Sheets logging
+| Zap | Steps | Apps | Last Active | Documentation |
+|-----|-------|------|-------------|---------------|
+| **Demo Requests** | 76 | GetForm → HubSpot → Slack → Gmail | Aug 2025 | [README](demo_requests/README.md) |
+| **Product Sign Ups** | 32 | Webhook → HubSpot → Slack → Sheets | Dec 2025 | [README](product_sign_ups/README.md) |
+| **Deal Signed** | 8 | HubSpot → AI → Sheets → Slack | Sep 2025 | [README](deal_signed/README.md) |
+| **Deal Renewed** | 7 | HubSpot → AI → Sheets → Slack | Sep 2025 | [README](deal_renewed/README.md) |
 
 ### Finance & Reporting
-Automations that maintain financial tracking.
 
-- **[ARR UPDATE](arr_update/README.md)** - Active
-  - Trigger: HubSpot deal changes
-  - Actions: ARR calculation, Sheets update
+| Zap | Steps | Apps | Last Active | Documentation |
+|-----|-------|------|-------------|---------------|
+| **ARR UPDATE** | 2 | Google Sheets → Slack | Feb 2025 | [README](arr_update/README.md) |
+| **SALES TARGET UPDATE** | 4 | Google Sheets → Slack | Dec 2024 | [README](sales_target_update/README.md) |
 
-- **[SALES TARGET UPDATE](sales_target_update/README.md)** - Active
-  - Trigger: HubSpot deal won
-  - Actions: Target progress calculation
+### Communication & Support
 
-### Communication
-Automations that route messages and alerts.
+| Zap | Steps | Apps | Last Active | Documentation |
+|-----|-------|------|-------------|---------------|
+| **Intercom Demo Email / Slack** | 12 | Intercom → HubSpot → Gmail → Slack | Jul 2024 | [README](intercom_demo_email/README.md) |
+| **Intercom Request / Slack** | 5 | Intercom → AI → Slack | Oct 2024 | [README](intercom_request_slack/README.md) |
 
-- **[Intercom Request / Slack](intercom_request_slack/README.md)** - Active
-  - Trigger: Intercom conversation (support)
-  - Actions: Slack notification
+### HubSpot Data Management
 
-- **[Intercom Demo Email / Slack](intercom_demo_email/README.md)** - Active
-  - Trigger: Intercom conversation (demo keywords)
-  - Actions: Email + Slack notification
+| Zap | Steps | Apps | Last Active | Documentation |
+|-----|-------|------|-------------|---------------|
+| **Auto-set: Previous Customer / Customer** | 8 | HubSpot (lifecycle management) | May 2025 | [README](auto_set_lifecycle/README.md) |
 
-- **[Intercom Bot Reply / Slack](intercom_bot_reply/README.md)** - Active
-  - Trigger: Intercom bot conversation
-  - Actions: Slack notification
+---
 
-### Client Delivery Monitoring
-Automations that monitor S3 bucket deliveries.
+## Automation Flow Architecture
 
-- Log Assure Delivery
-- Log Underscore Delivery
-- Log Expa Delivery
-- Log Moonfire (S3) Delivery
-- Log Omers Delivery
-- Log STS Delivery
-- Notify about missing delivery
+```
+                         ┌─────────────────────────────────────┐
+                         │            TRIGGERS                 │
+                         └─────────────────────────────────────┘
+                                         │
+         ┌───────────────┬───────────────┼───────────────┬───────────────┐
+         │               │               │               │               │
+         ▼               ▼               ▼               ▼               ▼
+    ┌─────────┐    ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
+    │ GetForm │    │  Webhook │   │ HubSpot  │   │ Intercom │   │  Sheets  │
+    │  Forms  │    │ (Product)│   │  Events  │   │  Chats   │   │ Changes  │
+    └────┬────┘    └────┬─────┘   └────┬─────┘   └────┬─────┘   └────┬─────┘
+         │               │               │               │               │
+         └───────────────┴───────────────┴───────────────┴───────────────┘
+                                         │
+                                         ▼
+                         ┌─────────────────────────────────────┐
+                         │         PROCESSING LAYER            │
+                         │  • Code by Zapier (Python)          │
+                         │  • Formatter by Zapier              │
+                         │  • Filters & Paths                  │
+                         │  • AI by Zapier                     │
+                         └─────────────────────────────────────┘
+                                         │
+         ┌───────────────┬───────────────┼───────────────┬───────────────┐
+         │               │               │               │               │
+         ▼               ▼               ▼               ▼               ▼
+    ┌─────────┐    ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌──────────┐
+    │ HubSpot │    │  Slack   │   │  Gmail   │   │  Sheets  │   │ Intercom │
+    │   CRM   │    │  Alerts  │   │  Emails  │   │  Logs    │   │  Replies │
+    └─────────┘    └──────────┘   └──────────┘   └──────────┘   └──────────┘
+```
 
-### Landscape Downloads
-23 Zaps handling landscape report download requests.
+---
+
+## Detailed Zap Breakdown
+
+### 1. Demo Requests (76 Steps)
+**The most critical automation** - Processes all inbound demo requests.
+
+| Component | Details |
+|-----------|---------|
+| **Trigger** | GetForm → New Form Submission |
+| **Apps** | GetForm, Google Sheets, HubSpot, Gmail, Slack, Code by Zapier |
+| **Key Functions** | Lead classification, deal creation, owner assignment, notifications |
+| **Code Scripts** | `zapier_classify_lead_type.py`, `zapier_deal_owner.py` |
+
+**Flow**:
+1. Form submitted on tryspecter.com
+2. Data formatted and logged to Sheets
+3. HubSpot: Find/Create Company, Contact, Deal
+4. Code: Classify lead type (New/Returning/Churned)
+5. Code: Assign deal owner based on rules
+6. Slack: Notify #sales-inbound
+7. Gmail: Send internal summary
+
+[Full Documentation →](demo_requests/README.md)
+
+---
+
+### 2. Product Sign Ups (32 Steps)
+Tracks self-serve product signups.
+
+| Component | Details |
+|-----------|---------|
+| **Trigger** | Webhook from Product Backend |
+| **Apps** | HubSpot, Google Sheets, Slack, Code by Zapier |
+| **Key Functions** | Contact/company creation, deal tracking, notifications |
+
+[Full Documentation →](product_sign_ups/README.md)
+
+---
+
+### 3. Deal Signed (8 Steps)
+Celebrates and logs won deals.
+
+| Component | Details |
+|-----------|---------|
+| **Trigger** | HubSpot Deal → Stage = Won |
+| **Apps** | HubSpot, AI by Zapier, Google Sheets, Slack |
+| **Key Functions** | Product mapping, finance logging, Slack celebration |
+
+[Full Documentation →](deal_signed/README.md)
+
+---
+
+### 4. Deal Renewed (7 Steps)
+Tracks customer renewals.
+
+| Component | Details |
+|-----------|---------|
+| **Trigger** | HubSpot Deal → Stage = Renewed |
+| **Apps** | HubSpot, AI by Zapier, Google Sheets, Slack |
+| **Key Functions** | Renewal tracking, ARR maintenance, celebration |
+
+[Full Documentation →](deal_renewed/README.md)
+
+---
+
+### 5. Intercom Demo Email / Slack (12 Steps)
+Routes demo requests from Intercom chat.
+
+| Component | Details |
+|-----------|---------|
+| **Trigger** | Intercom Conversation (demo keywords) |
+| **Apps** | Intercom, HubSpot, Gmail, Slack, Code by Zapier |
+| **Key Functions** | Keyword detection, HubSpot enrichment, routing |
+
+[Full Documentation →](intercom_demo_email/README.md)
+
+---
+
+### 6. Auto-set Lifecycle (8 Steps)
+Manages HubSpot lifecycle stages automatically.
+
+| Component | Details |
+|-----------|---------|
+| **Trigger** | HubSpot Deal Stage Changes |
+| **Apps** | HubSpot, Filter by Zapier |
+| **Key Functions** | Set Previous Customer / Customer lifecycle |
+
+[Full Documentation →](auto_set_lifecycle/README.md)
+
+---
+
+### 7. Intercom Request / Slack (5 Steps)
+Alerts support team of Intercom requests.
+
+| Component | Details |
+|-----------|---------|
+| **Trigger** | Intercom New Conversation |
+| **Apps** | Intercom, AI by Zapier, Slack |
+| **Key Functions** | Request classification, Slack routing |
+
+[Full Documentation →](intercom_request_slack/README.md)
+
+---
+
+### 8. SALES TARGET UPDATE (4 Steps)
+Tracks progress against sales targets.
+
+| Component | Details |
+|-----------|---------|
+| **Trigger** | Google Sheets Row Updated |
+| **Apps** | Google Sheets, Slack, Code by Zapier |
+| **Key Functions** | Target calculation, progress alerts |
+
+[Full Documentation →](sales_target_update/README.md)
+
+---
+
+### 9. ARR UPDATE (2 Steps)
+Real-time ARR tracking.
+
+| Component | Details |
+|-----------|---------|
+| **Trigger** | Google Sheets Row Updated |
+| **Apps** | Google Sheets, Slack |
+| **Key Functions** | ARR change notifications |
+
+[Full Documentation →](arr_update/README.md)
+
+---
+
+## Landscape Download Zaps (23 Active)
+
+These are simple 3-step form handlers for landscape report downloads:
+
+| Category | Count | Example |
+|----------|-------|---------|
+| AI/Tech Landscapes | 12 | AI x GTM, AI Voice Agents, AI Agents Ecosystem |
+| Industry Landscapes | 8 | Biotech, Legal AI, Restaurant Tech |
+| Regional Landscapes | 3 | LATAM AI, French AI, EU Defence |
+
+Each follows the pattern: GetForm → Google Sheets → Slack notification
 
 ---
 
 ## Code by Zapier Scripts
 
-All Python scripts used in Zapier are maintained in:
+All Python scripts are maintained in version control:
 
 ```
 hubspot_automations/scripts/hs_zapier_code/
 ├── assign_deal_owner/
-│   ├── zapier_deal_owner.py      # Deal owner assignment
-│   └── zapier_returning_lead_owner.py
+│   ├── zapier_deal_owner.py           # Deal owner assignment logic
+│   ├── zapier_returning_lead_owner.py # Returning lead handling
+│   └── test_deal_owner.py             # Unit tests
 ├── demo_request/
-│   ├── zapier_classify_lead_type.py  # Lead classification
+│   ├── zapier_classify_lead_type.py   # Lead classification (800+ lines)
 │   ├── zapier_deal_reuse_or_create.py
-│   └── zapier_prepare_deal_properties.py
-├── deal_signed/
-│   └── zapier_deal_signed_map.md  # Product mapping
-├── domain_redirects/
-│   └── find_companies_by_domain.py
-├── get_deal_owner_name/
-│   └── zapier_get_owner_name.py
-└── latest_company_deal/
-    └── get_latest_company_deal.py
+│   └── ZAPIER_MAPPING_GUIDE.md
+└── deal_signed/
+    └── zapier_deal_signed_map.md
 ```
 
 ---
 
 ## Disabled/Legacy Zaps
 
-These Zaps are OFF and should not be used:
-
-| Zap | Reason |
-|-----|--------|
-| (Copy) Product Sign Ups | Duplicate - use original |
-| (Copy) Demo Requests | Duplicate - use original |
-| New Inbound | Legacy - replaced by Demo Requests |
-| New Deal Signed | Legacy - replaced by Deal Signed |
-| arr update | Legacy - replaced by ARR UPDATE |
-| [OLD] Closed Lost Notes | Deprecated |
+| Zap | Status | Reason |
+|-----|--------|--------|
+| Intercom Bot Reply / Slack | OFF | Replaced/Consolidated |
+| Contacts to Deals Associations | OFF | Manual process now |
+| (Copy) Product Sign Ups | OFF | Duplicate |
+| (Copy) Demo Requests | OFF | Duplicate |
+| [OLD] Closed Lost Notes | OFF | Deprecated |
 
 ---
 
-## How to Modify Zaps
+## Documentation Tools
 
-### Making Changes
-1. Go to [Zapier Editor](https://zapier.com/app/zaps)
-2. Click on the Zap to edit
-3. Make changes
-4. Test with sample data
-5. Publish new version
-6. Update this documentation
+### Auto-Generate Documentation
 
-### Adding Code Scripts
-1. Write/modify script in `hs_zapier_code/` folder
-2. Test locally
-3. Copy to Zapier Code step
-4. Update documentation
+```bash
+cd zapier_automations/scripts
+
+# 1. Export from browser (at zapier.com/app/zaps, F12 → Console):
+# [paste browser export script from SETUP.md]
+
+# 2. Move downloaded file:
+mv ~/Downloads/zaps_full_details.json data/
+
+# 3. Generate READMEs for active zaps:
+python3 zapier_api.py --document --from-file data/zaps_full_details.json --active-only
+
+# 4. Check status:
+python3 zapier_api.py --status
+```
+
+### Available Commands
+
+```bash
+python3 zapier_api.py --document --active-only    # Generate docs for active zaps
+python3 zapier_api.py --status                    # Show documentation status
+python3 zapier_api.py --list-mapped               # Show zap-to-folder mappings
+```
 
 ---
 
-## Zapier Account Details
+## Account Details
 
 | Property | Value |
 |----------|-------|
 | Account | Dominik Vacikar Individual |
 | Plan | Professional |
-| Task Limit | 2,000/month |
-| Active Zaps | ~50 |
-| Held Runs | 250 max |
+| Monthly Task Limit | 2,000 |
+| Active Zaps | 32 |
+| Folders | Leads, CS, Hubspot Automations, Landscapes |
 
 ---
 
-## Screenshots
+## Quick Links
 
-Visual references are stored in each Zap's `screenshots/` folder:
-- `demo_requests/screenshots/demo_requests_zap_overview.png`
+- [Zapier Dashboard](https://zapier.com/app/zaps)
+- [Demo Requests Editor](https://zapier.com/editor/262386682)
+- [Product Sign Ups Editor](https://zapier.com/editor/268969745)
+- [Deal Signed Editor](https://zapier.com/editor/164077234)
+
+---
+
+## Changelog
+
+| Date | Changes |
+|------|---------|
+| Feb 5, 2026 | Full documentation refresh from API export |
+| Jan 29, 2026 | Added auto-documentation scripts |
+| Jan 2026 | Demo Requests v117 - fixed returning lead classification |
+
+---
+
+*Documentation auto-generated from Zapier API. Last sync: February 5, 2026*

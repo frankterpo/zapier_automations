@@ -1,24 +1,41 @@
-# Intercom Demo Email / Slack Automation
+# Intercom Demo Email Automation
 
 > **Status**: ✅ Active (ON)  
-> **Location**: Leads  
-> **Last Modified**: Apr 30, 2025  
-> **Owner**: Dominik Vacikar  
+> **Zap ID**: 207157349  
+> **Steps**: 12  
+> **Last Modified**: October 07, 2025  
+> **Last Successful Run**: July 19, 2024 at 14:11 UTC  
+> **Editor**: [Open in Zapier](https://zapier.com/editor/207157349)
 
-## What This Zap Does
-
-When someone requests a **demo through Intercom** (instead of the website form), this Zap:
-
-1. **Captures** the Intercom conversation
-2. **Identifies** it as a demo request
-3. **Sends** email notification to sales
-4. **Posts** to Slack for team visibility
+## Table of Contents
+1. [What This Zap Does](#what-this-zap-does)
+2. [Apps Used](#apps-used)
+3. [Flow Architecture](#flow-architecture)
+4. [Step-by-Step Breakdown](#step-by-step-breakdown)
+5. [Troubleshooting](#troubleshooting)
+6. [How to Modify](#how-to-modify)
 
 ---
 
-## Why This Exists
+## What This Zap Does
 
-Some visitors prefer using Intercom chat to request demos rather than filling out the form. This Zap ensures these leads aren't lost.
+This automation is triggered by **Googlemail** and performs 11 subsequent actions.
+
+**Trigger**: Googlemail: Send Email
+
+**Main Actions**: HubSpot → Slack → Code by Zapier
+
+---
+
+## Apps Used
+
+| App | Usage in Zap |
+|-----|-------------|
+| Googlemail | 1 step(s): Googlemail: Send Email |
+| HubSpot | 8 step(s): HubSpot: _zap_raw_request, HubSpot: find_associations, HubSpot: find_associations +5 more |
+| Slack | 1 step(s): Slack: Send Channel Message |
+| Code by Zapier | 1 step(s): Code by Zapier: Custom Code |
+| Filter by Zapier | 1 step(s): Filter by Zapier: Filter |
 
 ---
 
@@ -26,70 +43,198 @@ Some visitors prefer using Intercom chat to request demos rather than filling ou
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                         TRIGGER                                  │
-│  Intercom → New Conversation Started                            │
+│                             TRIGGER                             │
+│  1. Googlemail: Send Email                                      │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                         FILTER                                   │
-│  Only continue if message contains:                             │
-│  • "demo", "meeting", "call", "trial"                           │
-│  • Excludes support-type keywords                               │
+│                             ACTIONS                             │
+│  2. HubSpot: _zap_raw_request                                   │
+│  3. HubSpot: find_associations                                  │
+│  4. HubSpot: find_associations                                  │
+│  5. HubSpot: Create Associations                                │
+│  6. HubSpot: Create Associations                                │
+│  7. HubSpot: Find Deal                                          │
+│  8. HubSpot: upsert_contact                                     │
+│  9. HubSpot: Find Company                                       │
+│  10. Slack: Send Channel Message                                 │
+│  11. Code by Zapier: Custom Code                                 │
 └─────────────────────────────────────────────────────────────────┘
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────────┐
-│                      NOTIFICATIONS                              │
-│  1. Email: Send to sales@specter.com                            │
-│  2. Slack: Post to #sales-inbound                               │
+│                              LOGIC                              │
+│  12. Filter by Zapier: Filter                                    │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
 ---
 
-## Filter Keywords
+## Step-by-Step Breakdown
 
-### Include (demo request signals)
-- "demo"
-- "trial"
-- "call"
-- "meeting"
-- "pricing"
-- "schedule"
+### Step 1: Googlemail: Send Email
 
-### Exclude (support signals)
-- "help"
-- "issue"
-- "bug"
-- "error"
-- "broken"
+| Property | Value |
+|----------|-------|
+| **Type** | ⚡ Trigger |
+| **App** | Googlemail |
+| **Action** | Send Email |
+
+### Step 2: HubSpot: _zap_raw_request
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | HubSpot |
+| **Action** | _zap_raw_request |
+
+### Step 3: HubSpot: find_associations
+
+| Property | Value |
+|----------|-------|
+| **Type** | 🔍 Search |
+| **App** | HubSpot |
+| **Action** | find_associations |
+
+### Step 4: HubSpot: find_associations
+
+| Property | Value |
+|----------|-------|
+| **Type** | 🔍 Search |
+| **App** | HubSpot |
+| **Action** | find_associations |
+
+### Step 5: HubSpot: Create Associations
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | HubSpot |
+| **Action** | Create Associations |
+
+### Step 6: HubSpot: Create Associations
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | HubSpot |
+| **Action** | Create Associations |
+
+### Step 7: HubSpot: Find Deal
+
+| Property | Value |
+|----------|-------|
+| **Type** | 🔍 Search_Or_Create |
+| **App** | HubSpot |
+| **Action** | Find Deal |
+
+### Step 8: HubSpot: upsert_contact
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | HubSpot |
+| **Action** | upsert_contact |
+
+### Step 9: HubSpot: Find Company
+
+| Property | Value |
+|----------|-------|
+| **Type** | 🔍 Search_Or_Create |
+| **App** | HubSpot |
+| **Action** | Find Company |
+
+### Step 10: Slack: Send Channel Message
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Slack |
+| **Action** | Send Channel Message |
+
+### Step 11: Code by Zapier: Custom Code
+
+| Property | Value |
+|----------|-------|
+| **Type** | ▶️ Action |
+| **App** | Code by Zapier |
+| **Action** | Custom Code |
+
+### Step 12: Filter by Zapier: Filter
+
+| Property | Value |
+|----------|-------|
+| **Type** | 🔀 Filter |
+| **App** | Filter by Zapier |
+| **Action** | Filter |
 
 ---
 
-## Notifications
+## Troubleshooting
 
-### Email
-**To**: sales@specter.com  
-**Subject**: 🎯 Demo Request via Intercom
+### Common Issues
 
-### Slack
-**Channel**: #sales-inbound
-```
-💬 Demo Request via Intercom
+#### Zap Not Triggering
 
-From: John Smith (john@acme.com)
-Company: Acme Corp
+**Check**:
+1. Verify the trigger app connection is active
+2. Check if the trigger event actually occurred
+3. Review Zap history for filtered out runs
 
-Message:
-"Hi, I'd like to schedule a demo of your platform..."
+#### Step Errors
 
-Respond in Intercom: [Link]
-```
+**Check**:
+1. Verify app authentication is current
+2. Check if required fields have values
+3. Review error message in Zap history
+
+### Viewing Zap History
+
+1. Open [Zap Editor](https://zapier.com/editor/207157349)
+2. Click "Zap runs" in left sidebar
+3. Review individual runs for errors
 
 ---
 
-## Related Documentation
+## How to Modify
 
-- [Demo Requests](../demo_requests/README.md) - Main demo flow
-- [Intercom Request / Slack](../intercom_request_slack/README.md) - Support requests
+### Editing Steps
+
+1. Open the Zap in Zapier Editor
+2. Click on the step you want to modify
+3. Update the configuration
+4. Test the step
+5. Publish the changes
+
+### Adding New Steps
+
+1. Click the "+" button between steps
+2. Search for the app you want to add
+3. Configure the action
+4. Map fields from previous steps
+5. Test and publish
+
+### Changing Trigger
+
+⚠️ **Warning**: Changing the trigger may require re-mapping all subsequent steps.
+
+1. Click on the trigger step
+2. Select new trigger event
+3. Reconfigure trigger settings
+4. Review and update all field mappings
+5. Test entire Zap before publishing
+
+---
+
+## Version History
+
+| Date | Changes |
+|------|---------|
+| October 07, 2025 | Last modified |
+| - | Documentation auto-generated |
+
+---
+
+*This documentation was auto-generated from Zapier API data.*
+*Last updated: 2026-02-05 15:01*
